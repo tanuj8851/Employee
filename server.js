@@ -7,10 +7,6 @@ const userRoutes= require("./routes/userRoutes")
 const employeeRoutes= require("./routes/employeeRoutes")
 const cors= require("cors")
 
-app.use(cors())
-app.use(express.json())
-app.use("/api",userRoutes);
-app.use("/api",employeeRoutes);
 app.get("/",(req,res)=>{
     try {
         res.send({msg:"HomePage"})
@@ -19,6 +15,11 @@ app.get("/",(req,res)=>{
         res.send({err:error})
     }
 })
+app.use(cors())
+app.use(express.json())
+app.use("/api",userRoutes);
+app.use("/api",employeeRoutes);
+
 
 
 app.listen(port,async()=>{
